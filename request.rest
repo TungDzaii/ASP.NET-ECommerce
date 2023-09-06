@@ -1,0 +1,18 @@
+# GET http://localhost:5000/brands
+# POST http://localhost:5000/brand/create
+# Content-Type: application/json
+
+# {
+#     "name": "asfaxcas"
+# }
+
+# DELETE http://localhost:5000/brand/delete/6463e85c750852fae9b04f38
+
+# GET http://localhost:5000/brand/view/645f8cc99908832439f3302d
+
+# PUT http://localhost:5000/brand/edit/6463e24e521327c31f026506
+# Content-Type: application/json
+
+# {
+#     "name": "Realme"
+# }

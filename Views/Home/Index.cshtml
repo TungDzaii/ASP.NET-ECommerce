@@ -1,0 +1,413 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+	ViewData["Title"] = "Home Page";
+	var user = ViewData["User"] as User;
+	var products = ViewData["Products"] as List<Product>;
+	var brands = ViewData["Brands"] as List<Brand>;
+}
+@*<div class="space-medium">
+
+	<div class="container">
+		<div class="row">
+			@foreach (var product in products)
+			{
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="showcase-block">
+						<div class="display-logo ">
+							<a href="#"><span>@product.Name</span></a>
+						</div>
+						<div class="showcase-img">
+							<a href="#"><img src="@product.Image" alt=""></a>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</div>*@
+
+<!-- slider -->
+<div class="slider">
+	<div class="owl-carousel owl-one owl-theme">
+		<div class="item">
+			<div class="slider-img">
+				<img src="./images/slider_1.jpg" alt="">
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-5 col-md-8 col-sm-6 col-xs-12">
+						<div class="slider-captions">
+							<div class="brand-img">
+								<img src="./images/mi_logo.png" alt="">
+							</div>
+							<h1 class="slider-title">Red Mi <span>Y1</span></h1>
+							<p class="hidden-xs">LED Selfie-light | Fingerprint sensor | Dedicated microSD card slot Snapdragon 435 octa-core processor </p>
+							<p class="slider-price">$138.99 </p>
+							<a href="#" class="btn btn-primary btn-lg hidden-xs">Buy Now</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="item">
+			<div class="slider-img"><img src="./images/slider_2.jpg" alt=""></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-5 col-md-8 col-sm-6 col-xs-12">
+						<div class="slider-captions">
+							<div class="brand-img">
+								<img src="./images/google_logo.png" alt="">
+							</div>
+							<h1 class="slider-title">Google Pixel 2</h1>
+							<p class="hidden-xs">The latest Qualcomm Snapdragon 835 processor | Water-resistant metal unibody | Up to 7 hours of battery.</p>
+							<p class="slider-price">$ 938.10</p>
+							<a href="#" class="btn btn-primary btn-lg hidden-xs">Download Free Template</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="item">
+			<div class="slider-img"><img src="./images/slider_3.jpg" alt=""></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-5 col-md-8 col-sm-6 col-xs-12">
+						<div class="slider-captions">
+							<div class="brand-img">
+								<img src="./images/apple_logo.png" alt="">
+							</div>
+							<h1 class="slider-title">iphone 8 plus  </h1>
+							<p class="hidden-xs">
+								5.5 inch Retina HD Display | 12MP wide-angle cameras
+								<br> | 64 GB &amp; 256 GB ROM Memory
+							</p>
+							<p class="slider-price">$759.64</p>
+							<a href="#" class="btn btn-primary btn-lg hidden-xs">Download Now</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /.slider -->
+<br />
+<br />
+<!-- latest products -->
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="box">
+				<div class="box-head">
+					<h3 class="head-title">Newest Product</h3>
+				</div>
+				<div class="box-body">
+					<div class="row">
+						<!-- product -->
+						<div class="item">
+							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+								<div class="product-block">
+									<div class="product-img"><img src="./images/product_img_5.png" alt=""></div>
+									<div class="product-content">
+										<h5><a href="#" class="product-title">Apple iPhone 6 <strong>(32 GB, Gold)</strong></a></h5>
+										<div class="product-meta">
+											<a href="#" class="product-price">$1700</a>
+											<a href="#" class="discounted-price">$2000</a>
+											<span class="offer-price">20%off</span>
+										</div>
+										<div class="shopping-btn">
+											<a href="#" class="product-btn btn-like"><i class="fa fa-heart"></i></a>
+											<a href="#" class="product-btn btn-cart"><i class="fa fa-shopping-cart"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /.product -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+@*<div class="container">
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="box">
+				<div class="box-head">
+					<h3 class="head-title">Latest Product</h3>
+				</div>
+				<div class="box-body">
+					<div class="row">
+						<!-- product -->
+						@if (products != null)
+						{
+							int min = 0;
+							int max = 12;
+							@for (int i = min; i < max; i++)
+							{
+								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+									<div class="product-block">
+										<div class="product-img"><a href="/product/@products[i].Pid"><img src="@products[i].Image" alt=""></a></div>
+										<div class="product-content">
+											<h5><a href="#" class="product-title">@products[i].Name <strong>(@products[i].Brand.Title)</strong></a></h5>
+											<div class="product-meta">
+												<p class="product-price">@products[i].Price$</p>
+											</div>
+											<div class="shopping-btn">
+												<a asp-area="" asp-controller="Cart" asp-action="Add" asp-route-id="@products[i].Pid" class="nav-link" class="product-btn btn-cart"><i class="fa fa-shopping-cart"></i></a>
+											</div>
+										</div>
+									</div>
+								</div>
+							}
+						}
+					</div>
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+							<a href="#" class="btn btn-primary" onclick="previous()">Previous</a>
+							<a href="#" class="btn btn-primary" onclick="next()">Next</a>
+						</div>
+					</div>
+				</div>
+				<script>
+					function previous() {
+						var min = Math.max(0, min - 12);
+						var max = Math.max(12, max - 12);
+						// Làm điều gì đó để cập nhật lại min và max (ví dụ: gọi API hoặc thay đổi giá trị trong DOM)
+					}
+
+					function next() {
+						var min = min + 12;
+						var max = max + 12;
+						// Làm điều gì đó để cập nhật lại min và max (ví dụ: gọi API hoặc thay đổi giá trị trong DOM)
+					}
+				</script>
+			</div>
+		</div>
+	</div>
+</div>*@
+
+<!-- /.latest products -->
+<!-- seller products -->
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="box">
+				<div class="box-head">
+					<h3 class="head-title">Best Seller Product</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="product-carousel">
+		<div class="box-body">
+			<div class="row">
+				<div class="owl-carousel owl-two owl-theme">
+					<!-- product -->
+					<div class="item">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="product-block">
+								<div class="product-img"><img src="./images/product_img_5.png" alt=""></div>
+								<div class="product-content">
+									<h5><a href="#" class="product-title">Apple iPhone 6 <strong>(32 GB, Gold)</strong></a></h5>
+									<div class="product-meta">
+										<a href="#" class="product-price">$1700</a>
+										<a href="#" class="discounted-price">$2000</a>
+										<span class="offer-price">20%off</span>
+									</div>
+									<div class="shopping-btn">
+										<a href="#" class="product-btn btn-like"><i class="fa fa-heart"></i></a>
+										<a href="#" class="product-btn btn-cart"><i class="fa fa-shopping-cart"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /.product -->
+					</div>
+					<!-- product -->
+					<div class="item">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="product-block">
+								<div class="product-img"><img src="./images/product_img_6.png" alt=""></div>
+								<div class="product-content">
+									<h5><a href="#" class="product-title">Apple iPhone 7 <strong>(256 GB, Black)</strong> </a></h5>
+									<div class="product-meta">
+										<a href="#" class="product-price">$1400</a>
+										<a href="#" class="discounted-price"><strike>$1800</strike></a>
+										<span class="offer-price">20%off</span>
+									</div>
+									<div class="shopping-btn">
+										<a href="#" class="product-btn btn-like"><i class="fa fa-heart"></i></a>
+										<a href="#" class="product-btn btn-cart"><i class="fa fa-shopping-cart"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /.product -->
+					<!-- product -->
+					<div class="item">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="product-block">
+								<div class="product-img"><img src="./images/product_img_7.png" alt=""></div>
+								<div class="product-content">
+									<h5><a href="#" class="product-title">Apple iPhone 6S <strong>(32GB, Gold)</strong> </a></h5>
+									<div class="product-meta">
+										<a href="#" class="product-price">$1300</a>
+										<a href="#" class="discounted-price"><strike>$2000</strike></a>
+										<span class="offer-price">20%off</span>
+									</div>
+									<div class="shopping-btn">
+										<a href="#" class="product-btn btn-like"><i class="fa fa-heart"></i></a>
+										<a href="#" class="product-btn btn-cart"><i class="fa fa-shopping-cart"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /.product -->
+					<!-- product -->
+					<div class="item">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="product-block">
+								<div class="product-img"><img src="./images/product_img_8.png" alt=""></div>
+								<div class="product-content">
+									<h5><a href="#" class="product-title">Apple iPhone X <strong>(64 GB, Grey)</strong></a></h5>
+									<div class="product-meta">
+										<a href="#" class="product-price">$1200</a>
+										<a href="#" class="discounted-price"><strike>$2000</strike></a>
+										<span class="offer-price">20%off</span>
+									</div>
+									<div class="shopping-btn">
+										<a href="#" class="product-btn btn-like"><i class="fa fa-heart"></i></a>
+										<a href="#" class="product-btn btn-cart"><i class="fa fa-shopping-cart"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /.product -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /.seller products -->
+<!-- featured products -->
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="box">
+				<div class="box-head">
+					<h3 class="head-title">Hot Product</h3>
+				</div>
+				<div class="box-body">
+					<div class="row">
+						<!-- product -->
+						@{
+							var sortedProducts = products.ToList();
+							for (int i = 0; i < sortedProducts.Count - 1; i++)
+							{
+								for (int j = 0; j < sortedProducts.Count - i - 1; j++)
+								{
+									if (sortedProducts[j].viewCount < sortedProducts[j + 1].viewCount)
+									{
+										var temp = sortedProducts[j];
+										sortedProducts[j] = sortedProducts[j + 1];
+										sortedProducts[j + 1] = temp;
+									}
+								}
+							}
+						}
+						@if (products != null)
+						{
+							for (int i = 0; i < sortedProducts.Count() && i<8; i++)
+							{
+								var product = sortedProducts[i];
+								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+									<div class="product-block">
+										<div class="product-img"><a href="/product/@product.Pid"><img src="@product.Image" alt=""></a></div>
+										<div class="product-content">
+											<h5><a href="#" class="product-title">@product.Name <strong>(@product.Brand.Title)</strong></a></h5>
+											<div class="product-meta">
+												<a href="#" class="product-price">@product.Price$</a>
+											</div>
+											<div class="shopping-btn">
+												<a asp-area="" asp-controller="Cart" asp-action="Add" asp-route-id="@product.Pid" class="nav-link" class="product-btn btn-cart"><i class="fa fa-shopping-cart"></i></a>
+											</div>
+										</div>
+									</div>
+								</div>
+							}
+						}
+					</div>
+					<!-- /.product -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<!-- /.featured products -->
+<!-- latest products -->
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="box">
+				<div class="box-head">
+					<h3 class="head-title">All Products</h3>
+				</div>
+				<div class="box-body">
+					<div class="row">
+						<!-- product -->
+						@if (products != null)
+						{
+							@foreach (var product in products)
+							{
+								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+									<div class="product-block">
+										<div class="product-img"><a href="/product/@product.Pid"><img src="@product.Image" alt=""></a></div>
+										<div class="product-content">
+											<h5><a href="#" class="product-title">@product.Name <strong>(@product.Brand.Title)</strong></a></h5>
+											<div class="product-meta">
+												<a href="#" class="product-price">@product.Price$</a>
+											</div>
+											<div class="shopping-btn">
+												<a asp-area="" asp-controller="Cart" asp-action="Add" asp-route-id="@product.Pid" class="nav-link" class="product-btn btn-cart"><i class="fa fa-shopping-cart"></i></a>
+											</div>
+										</div>
+									</div>
+								</div>
+							}
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- cta -->
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="newsletter-wrapper">
+				<div class="row">
+					<div class="col-lg-offset-5 col-lg-6 col-md-offset-5 col-md-6 col-sm-offset-5 col-sm-6 col-xs-12">
+						<div class="newsletter-form">
+							<h1>Subscribe To <strong>Get Discount &amp; Offers</strong></h1>
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Search for...">
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-primary">Subscribe</button>
+								</span>
+							</div>
+							<!-- /input-group -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /.cta -->

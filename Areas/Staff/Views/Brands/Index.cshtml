@@ -1,0 +1,36 @@
+﻿@using server.Models;
+@model IEnumerable<server.Models.Brand>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Staff/Views/Shared/_Layout.cshtml";
+    var user = ViewData["User"] as User;
+}
+
+<h1>Brand Management</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Add Brand</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Bid"><i class="fa-solid fa-pen-to-square m-2" style="font-size:200%; color: white;"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

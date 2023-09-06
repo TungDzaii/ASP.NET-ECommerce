@@ -1,0 +1,10 @@
+@{
+    ViewData["Title"] = "Verify";
+}
+
+@if (TempData["msg"] != null)
+{
+    <div><h1 class="text-center text-success">@TempData["msg"]</h1></div>
+}else{
+    <div><h1 class="text-center text-danger">404</h1></div>
+}

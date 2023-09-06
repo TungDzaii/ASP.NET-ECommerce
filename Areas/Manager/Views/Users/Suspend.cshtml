@@ -1,0 +1,37 @@
+﻿@model server.Models.User
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Suspend";
+    Layout = "~/Areas/Manager/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Suspend</h1>
+
+<h3>Are you sure you want to @(Model.Status.Equals("Suspended") ? "activate" : "suspend") this account?</h3>
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="row">
+        <!-- Display user information -->
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+    </dl>
+
+    <form asp-action="Suspend">
+        <input type="hidden" asp-for="Uid" />
+        <input type="hidden" asp-for="Status" value="@(Model.Status.Equals("Suspended") ? "Online" : "Suspended")" />
+        <input type="submit" value="@(Model.Status.Equals("Suspended") ? "Activate Account" : "Suspend Account")" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

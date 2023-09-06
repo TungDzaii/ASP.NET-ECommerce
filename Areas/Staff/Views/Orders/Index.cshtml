@@ -1,0 +1,72 @@
+﻿@model IEnumerable<server.Models.Order>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Areas/Staff/Views/Shared/_Layout.cshtml";
+	var user = ViewData["User"];
+}
+
+<h1>Order Management</h1>
+
+<p>
+	<a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				First Name
+			</th>
+			<th>
+				Last Name
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Address)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Created_at)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Updated_at)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Status)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Total)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.User.FirstName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.User.LastName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Address.Address_id)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Created_at)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Updated_at)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Status)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Total)
+				</td>
+				<td>
+					<a asp-action="Edit" asp-route-id="@item.Oder_id"><button type="button" class="btn btn-success">Edit status</button></a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
